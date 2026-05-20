@@ -413,9 +413,9 @@ singularity pull DeepMosaic_1.2.0-custom.sif library://sai7777777/deepmosaic/dee
 ```
 
 ## Note
-
-1. The DeepMosaic v1.2.0 Singularity image supports `hg19`, `hg38`, and `custom` genome builds.
-2. You'll need your own copy of ANNOVAR outside the singularity (please specify the path of ANNOVAR in `<options>`).
+1.Note: `--reference-fasta`, `--repeat-bed`, `--segdup-bed`, and `--skip-annovar` are only used with `deepmosaic-draw`. They should not be passed to `deepmosaic-predict`. For custom builds, first run `deepmosaic-draw -b custom ...` to generate `features.txt`, then run `deepmosaic-predict -i <output_dir/features.txt> -gb custom`.
+2. The DeepMosaic v1.2.0 Singularity image supports `hg19`, `hg38`, and `custom` genome builds.
+3. You'll need your own copy of ANNOVAR outside the singularity (please specify the path of ANNOVAR in `<options>`).
 
 ## Usage
 
