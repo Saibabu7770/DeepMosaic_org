@@ -168,6 +168,7 @@ For custom genome builds:
 > [DeepMosaic Path]/deepmosaic/deepmosaic-draw -i <input.txt> -o <output_dir> --build custom --reference-fasta <reference.fa> --repeat-bed <repeat.bed> --segdup-bed <segdup.bed> --skip-annovar
 ```
 
+For `--build custom`, `--reference-fasta`, `--repeat-bed`, and `--segdup-bed` are required arguments for `deepmosaic-draw`. Use `--skip-annovar` for custom or non-human assemblies when ANNOVAR/gnomAD annotation is not available. These options are used only with `deepmosaic-draw`; do not pass them to `deepmosaic-predict`.
 
 ### Note:
 
