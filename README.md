@@ -59,15 +59,17 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 ## DeepMosaic 1.2.0 update
 
-Major:
-1.DeepMosaic now supports custom genome build support, which allows for donor-specific genome assembly as well as non-human diploid organisms (for custom genome builds, the performance might vary from the original benchmark)
-2.For custom genome builds, users must provide a matching reference FASTA, repeat BED, and segmental-duplication BED. BAM/CRAM, VCF, FASTA, and BED files from the same coordinate system. We have tested some non-human builds, such as the GRCm39.
+### Major
 
-Minor:
-1.Adjustable parameters for depth ratio in deepmosaic-predict
-2.Updated Singularity and Docker containers to reflect the above changes
-3.Updated tutorial and wiki page to reflect the above changes
+1. DeepMosaic now supports custom genome build support, which allows for donor-specific genome assembly as well as non-human diploid organisms. For custom genome builds, the performance might vary from the original benchmark.
+2. For custom genome builds, users must provide a matching reference FASTA, repeat BED, and segmental-duplication BED. BAM/CRAM, VCF, FASTA, and BED files should be from the same coordinate system. We have tested some non-human builds, such as GRCm39.
 
+### Minor
+
+1. Adjustable parameters for depth ratio in `deepmosaic-predict`.
+2. Updated Singularity and Docker containers to reflect the above changes.
+3. Updated tutorial and wiki page to reflect the above changes.
+   
 [Return to Contents](#contents)
 
 --------------------------------------------
