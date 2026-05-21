@@ -61,7 +61,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 ### Major
 
-1. DeepMosaic now supports custom genome build support, which allows for donor-specific genome assembly as well as non-human diploid organisms. For custom genome builds, the performance might vary from the original benchmark.
+1. DeepMosaic now supports custom genome build support, which allows for donor-specific genome assembly as well as non-human diploid organisms(For custom genome builds, the performance might vary from the original benchmark).
 2. For custom genome builds, users must provide a matching reference FASTA, repeat BED, and segmental-duplication BED. BAM/CRAM, VCF, FASTA, and BED files should be from the same coordinate system. We have tested some non-human builds, such as GRCm39.
 
 ### Minor
