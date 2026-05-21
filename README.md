@@ -57,18 +57,6 @@ An RGB image was used to represent the pileup results for all the reads aligned 
 
 Workflow of DeepMosaic on best-performed deep convolutional neural network model after benchmarking. Variants were first transformed into images based on the alignment information. A deep convolution neural network then extracted the high-dimensional information from the image, and experimental, genomic, and population-related information was further incorporated into the classifier.
 
-## DeepMosaic 1.2.0 update
-
-### Major
-
-1. DeepMosaic now supports custom genome build support, which allows for donor-specific genome assembly as well as non-human diploid organisms(For custom genome builds, the performance might vary from the original benchmark).
-2. For custom genome builds, users must provide a matching reference FASTA, repeat BED, and segmental-duplication BED. BAM/CRAM, VCF, FASTA, and BED files should be from the same coordinate system. We have tested some non-human builds, such as GRCm39.
-
-### Minor
-
-1. Adjustable parameters for depth ratio in `deepmosaic-predict`.
-2. Updated Singularity and Docker containers to reflect the above changes.
-3. Updated tutorial and wiki page to reflect the above changes.
    
 [Return to Contents](#contents)
 
@@ -109,7 +97,7 @@ Alternatively, you can use singularity or docker container. See [Singularity](#S
 
 </summary>
 
-We are now providing [singularity image](https://cloud.sylabs.io/library/sai7777777/deepmosaic/deepmosaic) and Docker image `sai7777777/deepmosaic:1.2.0-custom` to run DeepMosaic v1.2.0. The Singularity image can be downloaded with `singularity pull DeepMosaic_1.2.0-custom.sif library://sai7777777/deepmosaic/deepmosaic:1.2.0-custom`, and the Docker image can be downloaded with `docker pull sai7777777/deepmosaic:1.2.0-custom`. If you want to install and run DeepMosaic manually, please read through and follow these steps. The following steps could be performed in a command line shell environment (Linux, Mac, Windows subsystem Linux etc., whichever has the computational resource and >20G storage to run DeepMosaic)
+We are now providing [singularity image](https://cloud.sylabs.io/library/sai7777777/deepmosaic/deepmosaic) and [Docker image](https://hub.docker.com/r/sai7777777/deepmosaic) to run DeepMosaic v1.2.0. The Singularity image can be downloaded with `singularity pull DeepMosaic_1.2.0-custom.sif library://sai7777777/deepmosaic/deepmosaic:1.2.0-custom`, and the Docker image can be downloaded with `docker pull sai7777777/deepmosaic:1.2.0-custom`. If you want to install and run DeepMosaic manually, please read through and follow these steps. The following steps could be performed in a command line shell environment (Linux, Mac, Windows subsystem Linux etc., whichever has the computational resource and >20G storage to run DeepMosaic)
 
 ## Step 1. Install DeepMosaic
 
@@ -176,8 +164,7 @@ For custom genome builds:
 ```
 
 
-For `--build custom`, `--reference-fasta`, `--repeat-bed`, and `--segdup-bed` are required arguments for `deepmosaic-draw`. Use `--skip-annovar` for custom or non-human assemblies when ANNOVAR/gnomAD annotation is not available. These options are used only with `deepmosaic-draw`; do not pass them to `deepmosaic-predict`.
-
+For `--build custom`, `--reference-fasta`, `--repeat-bed`, and `--segdup-bed` are required arguments for `deepmosaic-draw`. BAM/CRAM, VCF, FASTA, repeat BED, and segdup BED must use the same coordinate system. Use `--skip-annovar` for custom or non-human assemblies when ANNOVAR/gnomAD annotation is not available. These options are used only with `deepmosaic-draw`; do not pass them to `deepmosaic-predict`.
 
 ### Note:
 
@@ -215,7 +202,7 @@ While using MuTect2 we recommend "PASS" vcfs as input for DeepMosaic. Running Mu
 
 6. `path_to_ANNOVAR` is the absolute path to the ANNOVAR program directory.
      
-7. `genome_build` is the build version of the reference genome. Supported options are `hg19`, `hg38`, and `custom`. Defaults to `hg19`. For `custom` builds, users must provide `--reference-fasta`, `--repeat-bed`, and `--segdup-bed`. BAM/CRAM, VCF, FASTA, repeat BED, and segdup BED must use the same coordinate system. Custom mode is experimental.
+7. `genome_build` is the build version of the reference genome. Supported options are `hg19`, `hg38`, and `custom`. Defaults to `hg19`. For `custom` builds, users must provide `--reference-fasta`, `--repeat-bed`, and `--segdup-bed`.
 
 8. `name_of_annovar_db` is the name of the db you want to use from the annovar subdirectory `[annovar/humandb]`. For example, if you want to use `annovar/humandb/hg38_gnomad312_genome.txt`, you would use `-db gnomad312_genome`. This option is fed directly into the annovar command as `--dbtype`. Defaults to `gnomad_genome`.
 
@@ -456,7 +443,7 @@ See [Usage](#Usage) and [Model Training](#model-training) for more details.
 
 </summary>
 
-Current DeepMosaic 1.2.0 Docker image is available as:
+Current DeepMosaic 1.2.0 Docker image is available on [Docker Hub](https://hub.docker.com/r/sai7777777/deepmosaic) as:
 
 ```
 docker pull sai7777777/deepmosaic:1.2.0-custom
@@ -529,7 +516,7 @@ We estimated > 90% experimental validation rate for WGS data identified as "mosa
 
 We estimated ~40% experimental validation rate for WES data identified as "mosaic" by the current DeepMosaic WGS model (GRCh37).
 
-Note that the performance of DeepMosaic on GRCh38 will be different, our preliminary estimation showed.
+Note that the performance of DeepMosaic on GRCh38 and other custom genome builds will be different; our estimation showed larger than 3% differences in prediction labels, especially for the mosaic labels.
 
 [Return to Contents](#contents)
 
@@ -603,6 +590,8 @@ Released under GNU-GPL 3.0 [licence](https://github.com/shishenyxx/DeepMosaic/bl
 
 [Virginia (Xin) Xu](https://github.com/Virginiaxu)
 
+[Sai Babu Patarlapalli](https://github.com/Saibabu7770)
+
 [Sang Lee](https://github.com/sang0318)
 
 [Arzoo Patel](https://github.com/arzoopatel5) 
@@ -610,9 +599,6 @@ Released under GNU-GPL 3.0 [licence](https://github.com/shishenyxx/DeepMosaic/bl
 [Jiawei Shen](https://github.com/JiaweiShen1116)
 
 [Xiaoxu Yang](https://github.com/shishenyxx)
-
-[Sai Babu Patarlapalli](https://github.com/Saibabu7770)
-
 
 --------------------------------------------
 
